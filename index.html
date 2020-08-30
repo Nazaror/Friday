@@ -1,0 +1,175 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<section class="login">
+    <div class="login__container">
+        <h3 class="true">Хороша спроба, але ми то знаємо, хто насправді)</h3>
+        <h3 class="Naz">Кхм кхм, це красавчик а не підор!</h3>
+        <h3 class="Vol">Це володар їжаків, а не підор!</h3>
+        <h2>Хто з нашої компанії підар?</h2>
+        <input id="login" type="text">
+        <a id="button">
+            Увійти</a>
+    </div>
+</section>
+<section class="content">
+    <h1>До останньої п`ятниці <a id="update">за</a>лишилося:</h1>
+    <div id="clock"></div>
+
+    <div class="wrapper">
+        <div class="header">
+            <h1>Правила зібраннь:</h1>
+<!--            <div class="col">-->
+<!--                <input type="text" placeholder="Додати правило" id="toDoEl">-->
+<!--                <span class="addBtn" onclick="newElement()">Додати</span>-->
+<!--            </div>-->
+
+        </div>
+        <ul id="list">
+           <li> -Пропуск без поважної причини-  <b>Заборонений</b></li>
+            <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em></li>
+           <li> Список поважних причин доопрацьовується</li>
+        </ul>
+    </div>
+</section>
+
+</body>
+<script>
+    var logineited = localStorage.getItem('logineited');
+    const button = document.querySelector("#button");
+    const input = document.querySelector("#login");
+    const content = document.querySelector(".content");
+    const login = document.querySelector(".login");
+    const trues = document.querySelector(".true");
+    const Naz = document.querySelector(".Naz");
+    const Vol = document.querySelector(".Vol");
+    const update = document.querySelector("#update");
+
+    function refresh() {
+        localStorage.clear();
+    }
+    update.addEventListener('click', function () {
+        refresh();
+    });
+    function Vasos() {
+        if (logineited == null) {
+            // checkAuth();
+            // localStorage.clear();
+            login.style.display = "flex";
+            content.style.display = "none";
+            trues.style.display = "none";
+        }
+        else {
+            // localStorage.clear();
+            login.style.display = "none";
+            content.style.display = "flex";
+            trues.style.display = "none";
+        };
+
+
+    };
+    function checkAuth() {
+
+        if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
+            login.style.display = "none";
+            content.style.display = "flex";
+            trues.style.display = "none";
+
+            localStorage.setItem('logineited', 'ok');
+        } else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
+            Naz.style.display = "flex";
+        } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
+            Vol.style.display = "flex";
+        } else {
+            trues.style.display = "flex";
+        }
+    }
+
+    button.addEventListener('click', function () {
+        checkAuth();
+    });
+    function getFri(now) {
+        var d = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        d.setDate(d.getDate() + [-2, -3, -4, -5, -6, 0, -1][d.getDay()]);
+        if(now.getDate() >= d.getDate()){
+            d = new Date(now.getFullYear(), now.getMonth() + 2, 0);
+            d.setDate(d.getDate() + [-2, -3, -4, -5, -6, 0, -1][d.getDay()]);
+
+        }
+        let diff = (d.getTime()-now.getTime())/1000;
+
+        let days = Math.floor(diff/(60*60*24));
+        diff%=60*60*24;
+        let hours = Math.floor(diff/(60*60));
+        diff%=60*60;
+        let min = Math.floor(diff/60);
+
+        diff%=60;
+        diff = Math.floor(diff);
+        return `<div>${days} ${trueRussianDecline("днів","день","дня",days)}</div>  <div>${hours} ${trueRussianDecline("годин","година","години",hours)}</div>  <div>${min} ${trueRussianDecline("хвилин","хвилина","хвилини",min)}</div> <div>${diff} ${trueRussianDecline("секунд","секунда","секунди",diff)}</div>`;
+    }
+    function trueRussianDecline(d1, d2, d3, c){
+        let res = "";
+        switch (c%100){
+            case 11: case 12: case 13: case 14:return d1;
+            default:
+                switch (c%10){
+                    case 0:case 5:case 6:case 7:case 8:case 9:return d1;
+                    case 1: return d2;
+                    case 2:case 3:case 4: return d3;
+                }
+        }
+        return "";
+    }
+
+    (function(){
+        document.querySelector("#clock").innerHTML = `${getFri(new Date())}`;
+        setTimeout(arguments.callee,1000);
+    })()
+    /////////
+
+    Vasos();
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+<script>
+    // var list = document.querySelector('ul');
+    // list.addEventListener('click', function (ev) {
+    //     if(ev.target.tagName === "LI") {
+    //         ev.target.classList.toggle('checked');
+    //     } else if(ev.target.tagName === "SPAN") {
+    //         var div = ev.target.parentNode;
+    //         div.remove();
+    //     }
+    // }, false);
+    //
+    // function newElement() {
+    //     var li = document.createElement('li');
+    //     var inputValue = document.getElementById('toDoEl').value;
+    //     var t = document.createTextNode(inputValue);
+    //     li.appendChild(t);
+    //     if(inputValue == "") {
+    //         alert("Введите ваше дело!");
+    //     } else {
+    //         document.getElementById('list').appendChild(li);
+    //     }
+    //     document.getElementById('toDoEl').value = "";
+    //     var span = document.createElement('SPAN');
+    //     var txt = document.createTextNode("X");
+    //     span.className = "close";
+    //     span.appendChild(txt);
+    //     li.appendChild(span);
+    // }
+</script>
+</html>
