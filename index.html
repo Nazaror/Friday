@@ -79,21 +79,43 @@
 
 
     };
-    function checkAuth() {
 
+    function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
 
             localStorage.setItem('logineited', 'ok');
-        } else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
-            Naz.style.display = "flex";
-        } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
-            Vol.style.display = "flex";
+        // }  else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
+        //     Naz.style.display = "flex";
+        //     console.log(1);
+        // } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
+        //     Vol.style.display = "flex";
+        //     console.log(2);
         } else {
+            console.log(3);
             trues.style.display = "flex";
         }
+
+
+
+        // if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
+        //     login.style.display = "none";
+        //     content.style.display = "flex";
+        //     trues.style.display = "none";
+        //
+        //     localStorage.setItem('logineited', 'ok');
+        // } else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
+        //     Naz.style.display = "flex";
+        //     console.log(1);
+        // } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
+        //     Vol.style.display = "flex";
+        //     console.log(2);
+        // } else  {
+        //     console.log(3);
+        //     trues.style.display = "flex";
+        // }
     }
 
     button.addEventListener('click', function () {
