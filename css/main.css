@@ -197,3 +197,10 @@ b {
     color: red;
     display: none;
 }
+.res {
+    display: flex;
+    flex-direction: column;
+}
+.res span {
+    padding: 10px 0;
+}

@@ -37,9 +37,20 @@
 
         </div>
         <ul id="list">
-           <li> -Пропуск без поважної причини-  <b>Заборонений</b></li>
-            <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em></li>
-           <li> Список поважних причин доопрацьовується</li>
+            <li> Авторизувавшись на даному сайті ви погодилися беззаперечно прийняти всі його правила.</li>
+            <li> Збір учасників відбувається кожної останньої п`ятниці місяця.</li>
+           <li> -Пропуск без поважної причини-  <b>Заборонений</b>.</li>
+            <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em>.</li>
+           <li> Всі питання вирішуються голосуванням, для затвердження рішення потрібно >50% голосів.</li>
+           <li> Якщо ваше ім`я починається на літеру "Н" ваш голос зараховується за 2.</li>
+            <li class="res">Поважні причини:
+            <span>1 Хвороба/травмна учасника, або когось з його найближчого оточення.</span>
+            <span>2 День народження/ювілей/іменини/інші великі свята, які більшість учасників визнає значущими.</span>
+            <span>3 Запланована поїздка(слід попередити, та перенести зустріч) за згоди інших учасників</span>
+            <span>4 Завал на роботі, якого неможливо уникнути(використовувати рідко, та за згоди інших учасників).</span>
+            </li>
+            <li> Рішення про перенесення зустрічі приймається не меш як за 24 години до планової зустрічі.</li>
+            <li> Рішення про внесення нового учасника вважається прийтятим лише згоди кожного з поточних учасників.</li>
         </ul>
     </div>
 </section>
@@ -82,40 +93,36 @@
 
     function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
+
+        }  else if (input.value.toLowerCase().match(/Наз|Naz|/)) {
+            Naz.style.display = "flex";
+            console.log(1);
+        } else if (input.value.toLowerCase().match(/Вов|Vol|/)) {
+            Vol.style.display = "flex";
+            console.log(2);
+        } else {
+            console.log(3);
+            trues.style.display = "flex";
+        }
+        if (/оле|ol|оле|оле|оле/g.test(input.value.toLowerCase())) {
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
 
             localStorage.setItem('logineited', 'ok');
-        // }  else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
-        //     Naz.style.display = "flex";
-        //     console.log(1);
-        // } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
-        //     Vol.style.display = "flex";
-        //     console.log(2);
+        } else if (/наз|naz|наз|наз/g.test(input.value.toLowerCase())) {
+            Naz.style.display = "flex";
+            Vol.style.display = "none";
+            trues.style.display = "none";
+        } else if (/вов|vol|вол|вол/g.test(input.value.toLowerCase())) {
+            Naz.style.display = "none";
+            Vol.style.display = "flex";
+            trues.style.display = "none";
         } else {
-            console.log(3);
+            Naz.style.display = "none";
+            Vol.style.display = "none";
             trues.style.display = "flex";
         }
-
-
-
-        // if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
-        //     login.style.display = "none";
-        //     content.style.display = "flex";
-        //     trues.style.display = "none";
-        //
-        //     localStorage.setItem('logineited', 'ok');
-        // } else if (input.value.toLowerCase().match(/Наз|Naz|Наз|Наз|/)) {
-        //     Naz.style.display = "flex";
-        //     console.log(1);
-        // } else if (input.value.toLowerCase().match(/Вов|Vol|Вол|Вол|/)) {
-        //     Vol.style.display = "flex";
-        //     console.log(2);
-        // } else  {
-        //     console.log(3);
-        //     trues.style.display = "flex";
-        // }
     }
 
     button.addEventListener('click', function () {
