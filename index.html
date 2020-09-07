@@ -15,9 +15,9 @@
 <section class="login">
     <div class="login__container">
         <h3 class="true">Хороша спроба, але ми то знаємо, хто насправді)</h3>
-        <h3 class="Naz">Кхм кхм, це красавчик а не підор!</h3>
-        <h3 class="Vol">Це володар їжаків, а не підор!</h3>
-        <h2>Хто з нашої компанії підар?</h2>
+        <h3 class="Naz">Ну то трохи підар, але і не красавчик</h3>
+        <h3 class="Vol">Це володар їжаків, а не красавчик!</h3>
+        <h2>Хто з нашої компанії красавчик?</h2>
         <input id="login" type="text">
         <a id="button">
             Увійти</a>
@@ -42,7 +42,7 @@
            <li> -Пропуск без поважної причини-  <b>Заборонений</b>.</li>
             <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em>.</li>
            <li> Всі питання вирішуються голосуванням, для затвердження рішення потрібно >50% голосів.</li>
-           <li> Якщо ваше ім`я починається на літеру "Н" ваш голос зараховується за 2.</li>
+           <li> Якщо ви створили цей сайт, вбили на нього кучу часу, хоч ці підори це і не цінують, ваш голос зараховується за 2. Але зловживати цим <b>ЗАБОРОНЕНО</b></li>
             <li class="res">Поважні причини:
             <span>1 Хвороба/травма учасника, або когось з його найближчого оточення.</span>
             <span>2 День народження/ювілей/іменини/інші великі свята, які більшість учасників визнає значущими.</span>
@@ -93,10 +93,10 @@
 
     function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
-
-        }  else if (input.value.toLowerCase().match(/Наз|Naz|/)) {
             Naz.style.display = "flex";
             console.log(1);
+        }  else if (input.value.toLowerCase().match(/Наз|Naz|/)) {
+
         } else if (input.value.toLowerCase().match(/Вов|Vol|/)) {
             Vol.style.display = "flex";
             console.log(2);
@@ -105,15 +105,17 @@
             trues.style.display = "flex";
         }
         if (/оле|ol|оле|оле|оле/g.test(input.value.toLowerCase())) {
+            Naz.style.display = "flex";
+            Vol.style.display = "none";
+            trues.style.display = "none";
+        } else if (/наз|naz|наз|наз/g.test(input.value.toLowerCase())) {
+
+
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
 
             localStorage.setItem('logineited', 'ok');
-        } else if (/наз|naz|наз|наз/g.test(input.value.toLowerCase())) {
-            Naz.style.display = "flex";
-            Vol.style.display = "none";
-            trues.style.display = "none";
         } else if (/вов|vol|вол|вол/g.test(input.value.toLowerCase())) {
             Naz.style.display = "none";
             Vol.style.display = "flex";
