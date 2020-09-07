@@ -16,7 +16,7 @@
 <section class="login">
     <div class="login__container">
         <h3 class="true">Хороша спроба, але ми то знаємо, хто насправді)</h3>
-        <h3 class="Naz">Ну то трохи підар, але і не красавчик</h3>
+        <h3 class="Naz">Це мега красавчик, а не красавчик!</h3>
         <h3 class="Vol">Це володар їжаків, а не красавчик!</h3>
         <h2>Хто з нашої компанії красавчик?</h2>
         <input id="login" type="text">
@@ -98,33 +98,35 @@
 
     function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
+
+        }  else if (input.value.toLowerCase().match(/Наз|Naz|/)) {
             Naz.style.display = "flex";
             console.log(1);
-        }  else if (input.value.toLowerCase().match(/Наз|Naz|/)) {
-
         } else if (input.value.toLowerCase().match(/Вов|Vol|/)) {
-            Vol.style.display = "flex";
-            console.log(2);
+
         } else {
             console.log(3);
             trues.style.display = "flex";
         }
         if (/оле|ol|оле|оле|оле/g.test(input.value.toLowerCase())) {
-            Naz.style.display = "flex";
-            Vol.style.display = "none";
-            trues.style.display = "none";
-        } else if (/наз|naz|наз|наз/g.test(input.value.toLowerCase())) {
-
-
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
+        } else if (/наз|naz|наз|наз/g.test(input.value.toLowerCase())) {
+            Naz.style.display = "flex";
+            Vol.style.display = "none";
+            trues.style.display = "none";
+
+
 
             sessionStorage.setItem('logineited', 'ok');
         } else if (/вов|vol|вол|вол/g.test(input.value.toLowerCase())) {
-            Naz.style.display = "none";
-            Vol.style.display = "flex";
+            login.style.display = "none";
+            content.style.display = "flex";
             trues.style.display = "none";
+            // Naz.style.display = "none";
+            // Vol.style.display = "flex";
+            // trues.style.display = "none";
         } else {
             Naz.style.display = "none";
             Vol.style.display = "none";
