@@ -37,8 +37,9 @@
 <!--            </div>-->
 
         </div>
+        <h4> Авторизувавшись на даному сайті ви погодилися беззаперечно прийняти всі його правила.</h4>
         <ul id="list">
-            <li> Авторизувавшись на даному сайті ви погодилися беззаперечно прийняти всі його правила.</li>
+
             <li> Збір учасників відбувається кожної останньої п`ятниці місяця.</li>
            <li> -Пропуск без поважної причини-  <b>Заборонений</b>.</li>
             <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em>.</li>
@@ -53,13 +54,15 @@
             <li> Рішення про перенесення зустрічі приймається не меш як за 24 години до планової зустрічі.</li>
             <li> Рішення про внесення нового учасника вважається прийтятим лише згоди кожного з поточних учасників.</li>
         </ul>
+        <a id="show">
+            Показати правила</a>
     </div>
 </section>
 
 </body>
 <script>
 
-    var logineited = localStorage.getItem('logineited');
+    var logineited = sessionStorage.getItem('logineited');
     const button = document.querySelector("#button");
     const input = document.querySelector("#login");
     const content = document.querySelector(".content");
@@ -70,7 +73,7 @@
     const update = document.querySelector("#update");
 
     function refresh() {
-        localStorage.clear();
+        sessionStorage.clear();
     }
     update.addEventListener('click', function () {
         refresh();
@@ -78,13 +81,13 @@
     function Vasos() {
         if (logineited == null) {
             // checkAuth();
-            // localStorage.clear();
+            // sessionStorage.clear();
             login.style.display = "flex";
             content.style.display = "none";
             trues.style.display = "none";
         }
         else {
-            // localStorage.clear();
+            // sessionStorage.clear();
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
@@ -117,7 +120,7 @@
             content.style.display = "flex";
             trues.style.display = "none";
 
-            localStorage.setItem('logineited', 'ok');
+            sessionStorage.setItem('logineited', 'ok');
         } else if (/вов|vol|вол|вол/g.test(input.value.toLowerCase())) {
             Naz.style.display = "none";
             Vol.style.display = "flex";
@@ -182,8 +185,10 @@
 <script>
 
     var list = document.querySelector('ul');
-    list.addEventListener('click', function (ev) {
+    var show = document.getElementById('show');
+    show.addEventListener('click', function (ev) {
        list.style.overflow = 'visible';
+        show.style.display = 'none';
     });
     console.log(list);
 

@@ -42,6 +42,18 @@ a {
     align-items: center;
     color: white;
 }
+#show {
+    margin: 0 auto;
+    width: 220px;
+    min-height: 50px;
+    border-radius: 30px;
+    background-color: #21759b;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
 .content {
     /*display: flex;*/
     display: none;
@@ -98,8 +110,9 @@ ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    max-height: 65px;
+    max-height: 0;
     overflow: hidden;
+
 }
 
 ul li {
@@ -114,7 +127,10 @@ ul li {
     -ms-user-select: none;
     user-select: none;
 }
-
+h4 {
+    text-align: center;
+    color: red;
+}
 ul li:nth-child(odd) {
     background: #f9f9f9;
 }
@@ -206,4 +222,7 @@ b {
 }
 .res span {
     padding: 10px 0;
+}
+h2 {
+    text-align: c;
 }
