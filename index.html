@@ -47,7 +47,7 @@
            <li> -Пропуск без поважної причини-  <b>Заборонений</b>.</li>
             <li> Пропуск без поважної причини карається: <em>оплатою наступного зібрання</em>.</li>
            <li> Всі питання вирішуються голосуванням, для затвердження рішення потрібно >50% голосів.</li>
-           <li> Якщо ви створили цей сайт, вбили на нього кучу часу, хоч ці підори це і не цінують, ваш голос зараховується за 2. Але зловживати цим <b>ЗАБОРОНЕНО</b></li>
+           <li> Якщо ви створили цей сайт, вбили на нього кучу часу, хоч ці "нехороші люди" це не цінують, ваш голос зараховується за 2. Але зловживати цим <b>ЗАБОРОНЕНО</b></li>
             <li class="res">Поважні причини:
             <span>1 Хвороба/травма учасника, або когось з його найближчого оточення.</span>
             <span>2 День народження/ювілей/іменини/інші великі свята, які більшість учасників визнає значущими.</span>
@@ -57,7 +57,7 @@
             <li> Рішення про перенесення зустрічі приймається не меш як за 24 години до планової зустрічі.</li>
             <li> Рішення про внесення нового учасника вважається прийтятим лише згоди кожного з поточних учасників.</li>
             <li> Персону, що бронює столик обирається на сайті підчас зібрання виключно.</li>
-            <li> Двічі підряд одна особа обраною бути не може. Якщо трапляється, потрібно переобрати особоу!</li>
+            <li> Двічі підряд одна особа обраною бути не може. Якщо трапляється, потрібно переобрати особу!</li>
         </ul>
         <a id="show">
             Показати правила</a>
@@ -67,7 +67,7 @@
 </body>
 <script>
 
-    var logineited = sessionStorage.getItem('logineited');
+    var logineited = localStorage.getItem('logineited');
     const button = document.querySelector("#button");
     const input = document.querySelector("#login");
     const content = document.querySelector(".content");
@@ -82,7 +82,7 @@
     let monthNumber;
 
     function refresh() {
-        sessionStorage.clear();
+        localStorage.clear();
     }
     update.addEventListener('click', function () {
         refresh();
@@ -90,13 +90,13 @@
     function Vasos() {
         if (logineited == null) {
             // checkAuth();
-            // sessionStorage.clear();
+            // localStorage.clear();
             login.style.display = "flex";
             content.style.display = "none";
             trues.style.display = "none";
         }
         else {
-            // sessionStorage.clear();
+            // localStorage.clear();
             login.style.display = "none";
             content.style.display = "flex";
             trues.style.display = "none";
@@ -108,21 +108,35 @@
         let rand = min + Math.random() * (max + 1 - min);
         return Math.floor(rand);
     };
-    randomButton.addEventListener('click', function (ev) {
+    randomButton.addEventListener('click', function victimGenerator (ev) {
         monthNumber = randomInteger(1, 3);
+
+
        if (monthNumber == 1) {
-           randomField.innerText = 'Олег';
            localStorage.setItem('monthVictim', 1);
+           randomField.innerText = 'Олег';
 
        } else if (monthNumber == 2) {
-           randomField.innerText = 'Вова';
            localStorage.setItem('monthVictim', 2);
+           randomField.innerText = 'Вова';
        } else if (monthNumber == 3) {
-           randomField.innerText = 'Назарій';
            localStorage.setItem('monthVictim', 3);
+           randomField.innerText = 'Назарій';
 
-       }
+        }
+
     });
+    function setVictim() {
+        if (monthVictim == 1) {
+            randomField.innerText = 'Олег';
+        } else if (monthVictim == 2) {
+            randomField.innerText = 'Вова';
+        } else if (monthVictim == 3) {
+            randomField.innerText = 'Назарій';
+
+        }
+    };
+    setVictim();
     function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
 
@@ -146,7 +160,7 @@
 
 
 
-            sessionStorage.setItem('logineited', 'ok');
+            localStorage.setItem('logineited', 'ok');
         } else if (/вов|vol|вол|вол/g.test(input.value.toLowerCase())) {
             login.style.display = "none";
             content.style.display = "flex";
@@ -219,25 +233,5 @@
        list.style.overflow = 'visible';
         show.style.display = 'none';
     });
-    console.log(list);
-
-    //
-    // function newElement() {
-    //     var li = document.createElement('li');
-    //     var inputValue = document.getElementById('toDoEl').value;
-    //     var t = document.createTextNode(inputValue);
-    //     li.appendChild(t);
-    //     if(inputValue == "") {
-    //         alert("Введите ваше дело!");
-    //     } else {
-    //         document.getElementById('list').appendChild(li);
-    //     }
-    //     document.getElementById('toDoEl').value = "";
-    //     var span = document.createElement('SPAN');
-    //     var txt = document.createTextNode("X");
-    //     span.className = "close";
-    //     span.appendChild(txt);
-    //     li.appendChild(span);
-    // }
 </script>
 </html>
