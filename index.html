@@ -27,7 +27,10 @@
 <section class="content">
     <h1>До останньої п`ятниці <a id="update">за</a>лишилося:</h1>
     <div id="clock"></div>
-
+    <div class="random">
+        <div class="random__box">Жертва місяця: <h3 id="random">Невідомо</h3></div>
+        <button id="randomize">Згенерувати</button>
+    </div>
     <div class="wrapper">
         <div class="header">
             <h1>Правила зібраннь:</h1>
@@ -53,6 +56,8 @@
             </li>
             <li> Рішення про перенесення зустрічі приймається не меш як за 24 години до планової зустрічі.</li>
             <li> Рішення про внесення нового учасника вважається прийтятим лише згоди кожного з поточних учасників.</li>
+            <li> Персону, що бронює столик обирається на сайті підчас зібрання виключно.</li>
+            <li> Двічі підряд одна особа обраною бути не може. Якщо трапляється, потрібно переобрати особоу!</li>
         </ul>
         <a id="show">
             Показати правила</a>
@@ -71,6 +76,10 @@
     const Naz = document.querySelector(".Naz");
     const Vol = document.querySelector(".Vol");
     const update = document.querySelector("#update");
+    const randomButton = document.getElementById("randomize");
+    const randomField = document.querySelector("#random");
+    var monthVictim = localStorage.getItem('monthVictim');
+    let monthNumber;
 
     function refresh() {
         sessionStorage.clear();
@@ -95,7 +104,25 @@
 
 
     };
+    function randomInteger(min, max) {
+        let rand = min + Math.random() * (max + 1 - min);
+        return Math.floor(rand);
+    };
+    randomButton.addEventListener('click', function (ev) {
+        monthNumber = randomInteger(1, 3);
+       if (monthNumber == 1) {
+           randomField.innerText = 'Олег';
+           localStorage.setItem('monthVictim', 1);
 
+       } else if (monthNumber == 2) {
+           randomField.innerText = 'Вова';
+           localStorage.setItem('monthVictim', 2);
+       } else if (monthNumber == 3) {
+           randomField.innerText = 'Назарій';
+           localStorage.setItem('monthVictim', 3);
+
+       }
+    });
     function checkAuth() {
         if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
 

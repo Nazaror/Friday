@@ -4,6 +4,8 @@ const input = document.querySelector("#login");
 const content = document.querySelector(".content");
 const login = document.querySelector(".login");
 const trues = document.querySelector(".true");
+const randomButton = document.getElementById("randomize");
+const randomField = document.querySelector("#random");
 
 function Vasos() {
     if (logineited == null) {
@@ -19,6 +21,14 @@ function Vasos() {
 
 
 };
+function randomInteger(min, max) {
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+}
+randomButton.addEventListener('click', function (ev) {
+    console.log(randomInteger(1, 3)) ;
+}
+alert( randomInteger(1, 3) );
 function checkAuth() {
 
     if (input.value.toLowerCase().match(/оле|ol|оле|оле|оле/)) {
